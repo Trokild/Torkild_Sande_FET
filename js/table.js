@@ -36,26 +36,7 @@ let pokemons =[
     }
 ];
 
-document.addEventListener("DOMContentLoaded", function()
-{
-    insertData();
-    //vanillaData();
-});
-
-function insertData()
-{   
-    let datid =['id', 'icon', 'description', 'info', 'image'];
-    for (r = 0; r < pokemons.length; r++){
-        let row = '<tr>' +
-        '<td>' + pokemons[r][datid[0]] + '</td>' +
-        '<td>' + pokemons[r][datid[1]] + '</td>' +
-        '<td>' + pokemons[r][datid[2]] + '</td>' +
-        '<td>' + pokemons[r][datid[3]] + '</td>' +
-        '<td class = Image>' + pokemons[r][datid[4]] + '</td>' +
-        + '</tr>';
-        $("#personalTable").find('tbody').append($(row));
-    }
-};
+document.onload = vanillaData();
 
 function vanillaData()
 {
@@ -64,14 +45,13 @@ function vanillaData()
     tBody = table.getElementsByTagName('tbody')[0];
     for (r = 0; r < pokemons.length; r++)
     {
-        row = document.createElement('tr');
+        let row = document.createElement('tr');
         for (c = 0; c < 5; c++){
-            cell = document.createElement('td');
-            text = document.createTextNode(pokemons[r][datid[c]]);
-            cell.appendChild(text);
-            row.appendChild(cell)
-            }
-            tBody.appendChild(row);
+        let cell = document.createElement('td');
+        cell.innerHTML = " " + pokemons[r][datid[c]] + " ";
+        row.appendChild(cell)
+        }
+        tBody.appendChild(row);
     }
 }
 
@@ -83,7 +63,7 @@ $(function()
         $(this).css("color", "black");
     });
 
-    $("td.Image").click(function(){
+    $("td").click(function(){
         let img = $(this).find('img')[0].src;
         window.open(img);
     });
