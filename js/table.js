@@ -35,7 +35,6 @@ let pokemons =[
         image: "<img src='img/Gengar.jpeg' style='height:100px; width: auto'>"
     }
 ];
-
 document.onload = vanillaData();
 
 function vanillaData()
